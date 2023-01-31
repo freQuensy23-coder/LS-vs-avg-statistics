@@ -38,6 +38,13 @@ app.layout = html.Div([
         value=100,
         id='R-slider'
     ),
+    html.H4('Случайный шум в измерениях', style=text_style),
+    dcc.Slider(
+        0,
+        0.3,
+        value=100,
+        id='noise-slider'
+    ),
     html.H4('Плотность гистограммы', style=text_style),
     dcc.Slider(
         0,
@@ -56,11 +63,13 @@ app.layout = html.Div([
     Input('size-slider', 'value'),
     Input('points-count-slider', 'value'),
     Input('R-slider', 'value'),
-    Input('hist_density', 'value'))
-def update_figure(height, size, points_count, R, hist_density):
+    Input('hist_density', 'value'),
+    Input('noise-slidebar', 'value')
+)
+def update_figure(height, size, points_count, R, hist_density, noise):
     R = R
     U = make_noise(np.linspace(0, 3000, points_count, dtype=int))
-    I = make_noise(U / R, mu=0.15) + hill(U, scale=size, height=height)
+    I = make_noise(U / R, mu=noise) + hill(U, scale=size, height=height)
     # через усреднение
     Gs = []
     for i in range(len(I)):
