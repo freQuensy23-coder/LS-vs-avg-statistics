@@ -124,4 +124,4 @@ def update_figure(height, size, points_count, R, hist_density, noise):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=config.port, host=config.ip)
+    app.run_server(debug=config.debug, port=config.port, host=config.ip)
