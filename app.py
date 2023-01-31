@@ -1,5 +1,7 @@
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
+
+import config
 from utils import *
 import pandas as pd
 app = Dash(__name__)
@@ -122,4 +124,4 @@ def update_figure(height, size, points_count, R, hist_density, noise):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8501)
+    app.run_server(debug=True, port=config.port, host=config.ip)
