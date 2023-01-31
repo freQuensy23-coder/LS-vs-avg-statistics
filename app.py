@@ -41,8 +41,8 @@ app.layout = html.Div([
     html.H4('Случайный шум в измерениях', style=text_style),
     dcc.Slider(
         0,
-        0.3,
-        value=100,
+        0.5,
+        value=0.15,
         id='noise-slider'
     ),
     html.H4('Плотность гистограммы', style=text_style),
@@ -64,7 +64,7 @@ app.layout = html.Div([
     Input('points-count-slider', 'value'),
     Input('R-slider', 'value'),
     Input('hist_density', 'value'),
-    Input('noise-slidebar', 'value')
+    Input('noise-slider', 'value')
 )
 def update_figure(height, size, points_count, R, hist_density, noise):
     R = R
@@ -122,4 +122,4 @@ def update_figure(height, size, points_count, R, hist_density, noise):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=80, host='0.0.0.0')
+    app.run_server(debug=True, port=8501)
