@@ -44,7 +44,7 @@ app.layout = html.Div([
         500,
         value=300,
         id='hist_density'
-    )
+    ),
     dcc.Link(href='https://t.me/miptphyshub', title="Что тут происходит?")
 ])
 
